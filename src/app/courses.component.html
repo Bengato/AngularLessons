@@ -1,0 +1,37 @@
+<div class="container">
+  <div
+    [style.backgroundColor]="color"
+    style="border:2px solid black"
+    class="container rounded"
+  >
+    input color for header background
+    <input [(ngModel)]="color" class="form-control" />
+    <h2 class="mb-2 mt-2 display-2 rounded">
+      {{ getTitle() }}
+    </h2>
+    <br />
+    <img [src]="imageUrl" [style.height]="'80px'" />
+    <br />
+    <div *ngIf="courses.length > 0; else noCourses">
+      <ul>
+        <li *ngFor="let course of courses">
+          {{ course | titleCase }}
+        </li>
+      </ul>
+    </div>
+    <ng-template #noCourses> input course name then click enter</ng-template>
+    <input
+      [(ngModel)]="newCourse"
+      class="form-control"
+      (keyup.enter)="onKeyUp()"
+    />
+  </div>
+  just a toggling button
+  <button
+    (click)="onClick($event)"
+    class="btn btn-primary btn-sm form-control"
+    [class.active]="isActive"
+  >
+    Click!
+  </button>
+</div>

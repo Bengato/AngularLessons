@@ -1,0 +1,17 @@
+.zippy {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.zippy-heading {
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+.zippy-body {
+  padding: 20px;
+  background: #5b6369;
+}
+.fas {
+  float: right;
+}

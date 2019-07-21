@@ -1,0 +1,28 @@
+<h2>{{ authors.length }} Authors</h2>
+<ul style="list-style-type:none">
+  <li *ngFor="let author of authors; index as i; even as isEven">
+    <span
+      class="badge "
+      [class.badge-light]="!isEven"
+      [class.badge-secondary]="isEven"
+      >{{ i + 1 }}
+    </span>
+    {{ author.name }}
+    <span
+      (click)="onRemove(author)"
+      class="badge badge-danger badge-sm clickable"
+      >X</span
+    >
+  </li>
+</ul>
+<input (keyup.enter)="onAdd()" class="form-control" [(ngModel)]="newAuthor" />
+<button
+  (click)="onAdd()"
+  class="btn btn-sm"
+  [ngClass]="{
+    'btn-primary': newAuthor != '',
+    'btn-secondary': newAuthor == ''
+  }"
+>
+  Add an Author!
+</button>

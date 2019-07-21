@@ -1,0 +1,9 @@
+.fas {
+  cursor: pointer;
+}
+.fa-check:hover {
+  color: #70ff75;
+}
+.fa-trash:hover {
+  color: #ff7069;
+}

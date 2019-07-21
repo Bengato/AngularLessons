@@ -1,0 +1,81 @@
+<h2>Template-Driven Form</h2>
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input
+        ngModel
+        required
+        minlength="2"
+        maxlength="13"
+        pattern="[a-zA-Z]{2,}"
+        name="firstName"
+        #firstName="ngModel"
+        id="firstName"
+        type="text"
+        class="form-control"
+        (change)="log(firstName)"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="!firstName.valid && firstName.touched"
+      >
+        <div *ngIf="firstName.errors.required">
+          First name is required!
+        </div>
+        <div *ngIf="firstName.errors.minlength">
+          First name should be atleast 2 characters!
+        </div>
+        <div *ngIf="firstName.errors.pattern">
+          First name does not match the pattern of a first name!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment:</label
+    ><textarea
+      ngModel
+      name="comment"
+      id="comment"
+      cols="30"
+      rows="10"
+      class="form-control"
+    ></textarea>
+  </div>
+  <div class="checkbox">
+    <label class="badge badge-secondary">
+      <input type="checkbox" ngModel name="isSubscribed" />Subscribe to mailing
+      list!
+    </label>
+  </div>
+  <br />
+  <div class="form-group">
+    <select
+      ngModel
+      name="contactMethod"
+      id="contactMethod"
+      class="form-control"
+    >
+      <label for="contactMethod">Contact Method</label>
+      <option value=""></option>
+      <option *ngFor="let method of contactMethods" [ngValue]="method">
+        {{ method.name }}
+      </option>
+    </select>
+  </div>
+  <br />
+  <div *ngFor="let method of contactMethods" class="radio">
+    <label>
+      <input ngModel type="radio" name="contactMethod" [value]="method.id" />
+      {{ method.name }}⠀⠀⠀⠀
+    </label>
+  </div>
+  <p class="badge badge-secondary">{{ f.value | json }}</p>
+  <br />
+  <br />
+  <button class="btn btn-primary" [class.disabled]="!f.valid">
+    Submit
+  </button>
+  <div *ngIf="!contact.valid">...</div>
+</form>

@@ -1,0 +1,55 @@
+<h2>Reactive Form</h2>
+<form [formGroup]="form" (ngSumbit)="login()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      formControlName="username"
+      id="username"
+      type="text"
+      class="form-control"
+      [class.valid]="username.valid"
+    />
+    <div class="fas fa-spinner fa-spin" *ngIf="username.pending"></div>
+    <div class="fas fa-check" style="color:green" *ngIf="username.valid"></div>
+    <div
+      *ngIf="username.touched && username.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="username.errors.required">Username is Required</div>
+      <div
+        *ngIf="username.errors.minlength && !username.errors.cannotContainSpace"
+      >
+        Username needs atleast
+        {{ username.errors.minlength.requiredLength }} characters
+      </div>
+      <div *ngIf="username.errors.cannotContainSpace">
+        Username cannot have spaces
+      </div>
+      <div *ngIf="username.errors.shouldBeUnique">
+        Username taken
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      formControlName="password"
+      id="password"
+      type="text"
+      class="form-control"
+    />
+    <div
+      *ngIf="password.touched && password.invalid"
+      class="alert alert-danger"
+    >
+      Password is Required!
+    </div>
+  </div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [class.disabled]="username.invalid || password.invalid"
+  >
+    Sign Up
+  </button>
+</form>

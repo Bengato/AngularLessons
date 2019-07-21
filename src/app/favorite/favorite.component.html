@@ -1,0 +1,9 @@
+<span
+  (click)="onFavClick()"
+  class="btn btn-sm"
+  [ngClass]="{
+    'btn-primary': isFavorite,
+    'btn-secondary': !isFavorite
+  }"
+  >Like!</span
+>

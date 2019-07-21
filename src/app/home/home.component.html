@@ -1,0 +1,128 @@
+<h1 class="border-bottom p-2">Angular</h1>
+<ul class="nav nav-pills nav-fill border-bottom">
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('likes')"
+      >likes</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('courses')"
+      >courses</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('authors')"
+      >authors</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('panel')"
+      >panel</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('phone')"
+      >phone</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('zippy')"
+      >zippy</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('contact')"
+      >contact form</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('signup')"
+      >signup</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('posts')"
+      >posts</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('followers')"
+      >followers</a
+    >
+  </li>
+</ul>
+<div [ngSwitch]="viewMode" class="col-md-8 mx-auto m-2">
+  <div *ngSwitchCase="'likes'">
+    <app-heart [isActive]="tweet.isLiked" [likesCount]="tweet.likesCount">
+    </app-heart>
+    <favorite
+      [is-favorite]="post.isFavorite"
+      (on-click)="onFavoriteChanged($event)"
+    ></favorite>
+  </div>
+  <div *ngSwitchCase="'courses'">
+    <courses></courses>
+  </div>
+  <div *ngSwitchCase="'authors'">
+    <authors></authors>
+  </div>
+  <div *ngSwitchCase="'panel'">
+    <bootstrap-panel>
+      <ng-container class="heading">Heading</ng-container>
+      <div class="body">
+        <h2>Body</h2>
+        <p>some content...</p>
+      </div>
+    </bootstrap-panel>
+  </div>
+  <div *ngSwitchCase="'phone'">
+    <app-phone-number-us></app-phone-number-us>
+  </div>
+  <div *ngSwitchCase="'contact'">
+    <app-contact-form></app-contact-form>
+  </div>
+  <div *ngSwitchCase="'zippy'">
+    <zippy title="Shipping Details">Shipping details content</zippy>
+    <zippy title="View Cart">Cart items..</zippy>
+  </div>
+  <div *ngSwitchCase="'signup'">
+    <signup-form></signup-form>
+  </div>
+  <div *ngSwitchCase="'posts'">
+    <app-posts></app-posts>
+  </div>
+  <div *ngSwitchCase="'followers'">
+    <followers></followers>
+  </div>
+  <div *ngSwitchDefault>Click the page you want to see!</div>
+</div>
