@@ -28,6 +28,7 @@ import { HomeComponent } from "./home/home.component";
 import { GithubProfileComponent } from "./github-profile/github-profile.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { NotFoundComponent } from "./not-found/not-found.component";
     HomeComponent,
     NavbarComponent,
     GithubProfileComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,

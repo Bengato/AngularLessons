@@ -80,6 +80,14 @@
       >followers</a
     >
   </li>
+  <li class="nav-item">
+    <a
+      class="nav-link active m-2"
+      data-toggle="pill"
+      (click)="changeViewMode('search')"
+      >search</a
+    >
+  </li>
 </ul>
 <div [ngSwitch]="viewMode" class="col-md-8 mx-auto m-2">
   <div *ngSwitchCase="'likes'">
@@ -123,6 +131,9 @@
   </div>
   <div *ngSwitchCase="'followers'">
     <followers></followers>
+  </div>
+  <div *ngSwitchCase="'search'">
+    <searchbar></searchbar>
   </div>
   <div *ngSwitchDefault>Click the page you want to see!</div>
 </div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <input type="text" class="form-control" [(ngModel)]="search" />
+  <ul class="list-group" *ngIf="search != ''">
+    <div *ngFor="let movie of movies">
+      <li
+        *ngIf="movie.name.toUpperCase().includes(search.toUpperCase())"
+        class="list-group-item bg-secondary"
+      >
+        <div class="row">
+          <div class="col">
+            {{ movie.name }}
+          </div>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>
