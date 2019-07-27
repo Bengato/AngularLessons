@@ -1,0 +1,25 @@
+ng new proj-name
+-----------------------------------------------
+Installing Bootstrap in Angular
+npm install bootstrap --save // will install bootstrap and adds it as a dependancie in package.json
+@import "~bootstrap/dist/css/bootstrap.css"; on styles.css
+-----------------------------------------------
+<h2>{{title}}</h2>using interpolation to show the value of title var in h2
+<h2 [textContent}="title"></h2> doing the same thing using property binding, only works properties that have representation in the dom
+<td [attr.colspan]="colSpan"></td> binding attributes of html elements
+<button [class.active]="isActive"></button> class binding / if variable isActive is true button will have class active
+<button [style.backgroundColor]="colorInput"></button> style binding . sets a style attribute to a variable .user types green background turns green. can also use "coloInput?'blue':'green'"
+<button (click)="onClick()"></button> event binding. when click is raised on button it will call onClick() on component
+<button (click)="onClick($event)"></button>  -- in component -- onClick($event){} -- to pass the actual event object
+<input (keyup.enter)="onKeyUp()"/> event filtering. will only be called if keyup param is enter
+<input  #email (keyup.enter)="onKeyUp(email.value)"/>. creating a template variable . used to simplify code.
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp()"/> two way binding on email variable . changed by both template and component actions
+{{course.title | uppercase }} will flow the course title through the uppercase filter. output will be in uppercase
+{{course.rating | number:'1.1-2' }} pipe filtering. will display 1 digit left of decimal point and a minimum of 1 maximum of 2 after the decimal point. will round numbers
+{{ course.price | currency:'GBP':true :'3.2-2'}} will filter currency to GBP . default is USD. true will determine if we display the currency symbol. then we filter presentation.
+when creating costum pipes dont forget to ad them in app.module.js under declerations
+SEE HEART AND HOME COMPONENTS TO CHECK INPUT PROPERTIES  -- COMPONENT API
+-----------------------------------------------
+
+
+
